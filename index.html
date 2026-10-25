@@ -1,0 +1,144 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#101522">
+  <meta name="description" content="一座可以持续补充的专属回忆馆">
+  <title>Our Little Universe</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="ambient ambient-one" aria-hidden="true"></div>
+  <div class="ambient ambient-two" aria-hidden="true"></div>
+  <header class="site-header" id="top">
+    <a class="brand" href="#home" aria-label="回到首页">
+      <span class="brand-mark" id="secretTrigger" aria-hidden="true">✦</span>
+      <span>
+        <strong data-copy="brandName">Our Little Universe</strong>
+        <small data-copy="brandSubtitle">给我们的小小星系</small>
+      </span>
+    </a>
+    <button class="menu-button" id="menuButton" type="button" aria-expanded="false" aria-controls="siteNav">菜单</button>
+    <nav id="siteNav" class="site-nav" aria-label="主导航">
+      <a class="nav-link active" href="#home">首页</a>
+      <a class="nav-link" href="#timeline">时间线</a>
+      <a class="nav-link" href="#gallery">照片墙</a>
+      <a class="nav-link" href="#play">一起玩</a>
+      <a class="nav-link" href="#letters">未来信箱</a>
+    </nav>
+  </header>
+
+  <main>
+    <section class="hero section-shell" id="home">
+      <div class="hero-copy">
+        <p class="eyebrow"><span class="status-dot"></span> <span data-copy="eyebrow">只写给我们</span></p>
+        <h1><span data-copy="heroTitle">世界很大，</span><em data-copy="heroAccent">但我想把星光都留给你。</em></h1>
+        <p class="hero-intro" data-copy="heroIntro">这里先留一块位置，等我们把那些值得记住的日子，一点一点放进来。</p>
+        <div class="hero-actions">
+          <a class="button button-primary" href="#timeline">打开我们的时间线 <span aria-hidden="true">↓</span></a>
+          <button class="button button-quiet" type="button" id="surpriseButton">给我一个惊喜 <span aria-hidden="true">✦</span></button>
+        </div>
+      </div>
+      <div class="hero-orbit" aria-label="恋爱计时">
+        <div class="orbit-ring ring-back"></div>
+        <div class="orbit-ring ring-front"></div>
+        <div class="orbit-core">
+          <span class="orbit-label">我们已经一起</span>
+          <strong id="daysTogether">--</strong>
+          <span class="orbit-label">天</span>
+          <small id="dateHint">填入开始日期后，这里会自动计时</small>
+        </div>
+        <span class="orbit-star star-a">✦</span><span class="orbit-star star-b">✦</span><span class="orbit-star star-c">✧</span>
+      </div>
+    </section>
+
+    <section class="counter-strip section-shell" aria-label="重要日期">
+      <div><span class="metric-label">我们的开始</span><strong data-copy="startDateLabel">待补充</strong></div>
+      <div><span class="metric-label">下一次纪念日</span><strong id="nextAnniversary">待补充</strong></div>
+      <div><span class="metric-label">一起收藏</span><strong><span id="memoryCount">0</span> 个瞬间</strong></div>
+    </section>
+
+    <section class="content-section section-shell" id="timeline">
+      <div class="section-heading">
+        <div><p class="eyebrow">CHAPTER 01</p><h2>时间线</h2></div>
+        <p>每一段经历，都是我们宇宙里一颗有名字的星星。</p>
+      </div>
+      <div class="timeline-layout">
+        <div class="timeline-list" id="timelineList" aria-live="polite"></div>
+        <aside class="side-note">
+          <span class="note-number">01</span>
+          <p>“重要的不是我们走了多远，而是每次回头，都能看见彼此。”</p>
+          <span class="note-line"></span>
+          <small>可在 <code>app.js</code> 的 <code>siteData.timeline</code> 中继续添加故事</small>
+        </aside>
+      </div>
+    </section>
+
+    <section class="content-section section-shell gallery-section" id="gallery">
+      <div class="section-heading">
+        <div><p class="eyebrow">CHAPTER 02</p><h2>照片墙</h2></div>
+        <p>先放下占位卡片，等照片来了，它们会变成真正的回忆。</p>
+      </div>
+      <div class="filter-row" id="galleryFilters" role="toolbar" aria-label="照片分类"></div>
+      <div class="gallery-grid" id="galleryGrid"></div>
+    </section>
+
+    <section class="content-section section-shell play-section" id="play">
+      <div class="section-heading">
+        <div><p class="eyebrow">CHAPTER 03</p><h2>一起玩</h2></div>
+        <p>小小的互动，让她一边玩，一边发现你记得的细节。</p>
+      </div>
+      <div class="game-grid">
+        <article class="game-card quiz-card">
+          <div class="game-topline"><span class="game-index">A</span><span>记忆问答</span></div>
+          <h3>你还记得吗？</h3>
+          <p class="game-description">把问题换成你们之间才懂的答案。</p>
+          <div id="quizGame" class="game-body"></div>
+        </article>
+        <article class="game-card order-card">
+          <div class="game-topline"><span class="game-index">B</span><span>时间拼图</span></div>
+          <h3>排出我们的顺序</h3>
+          <p class="game-description">点击上下箭头，把重要日子排回正确位置。</p>
+          <div id="orderGame" class="game-body"></div>
+        </article>
+        <article class="game-card letter-card">
+          <div class="game-topline"><span class="game-index">C</span><span>未来信箱</span></div>
+          <h3>写给未来的我们</h3>
+          <p class="game-description">内容只保存在当前浏览器里，适合写下还没说出口的话。</p>
+          <div id="letterGame" class="game-body"></div>
+        </article>
+      </div>
+    </section>
+
+    <section class="letters-section section-shell" id="letters">
+      <div class="letter-banner">
+        <div><p class="eyebrow">A NOTE FOR LATER</p><h2>有些话，留给未来打开。</h2></div>
+        <button class="button button-light" type="button" id="openLetterButton">打开信箱 <span aria-hidden="true">→</span></button>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer section-shell">
+    <span>Made with patience, memories &amp; a little starlight.</span>
+    <a href="#top">回到顶部 ↑</a>
+  </footer>
+
+  <div class="modal-backdrop" id="modalBackdrop" hidden>
+    <section class="modal" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+      <button class="modal-close" id="modalClose" type="button" aria-label="关闭">×</button>
+      <p class="eyebrow" id="modalEyebrow">A HIDDEN NOTE</p>
+      <h2 id="modalTitle">给你的星光</h2>
+      <p id="modalText">每一颗星都代表一个还没来得及说出口的“谢谢你”。</p>
+      <div class="secret-field" id="secretField" hidden>
+        <label for="secretCode">输入你们的暗号</label>
+        <div class="inline-form"><input id="secretCode" type="text" autocomplete="off" placeholder="例如：第一次见面的地点"><button class="button button-primary" type="button" id="unlockButton">解锁</button></div>
+        <small id="unlockFeedback"></small>
+      </div>
+    </section>
+  </div>
+
+  <script>window.LOVE_API_BASE_URL = "http://localhost:3000";</script>
+  <script src="app.js"></script>
+</body>
+</html>

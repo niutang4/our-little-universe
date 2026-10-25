@@ -1,0 +1,86 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>内容管理 | Our Little Universe</title>
+  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="manage.css">
+</head>
+<body>
+  <main class="manage-shell">
+    <header class="manage-header">
+      <div><p class="eyebrow">PRIVATE CONTENT DESK</p><h1>网站内容管理</h1><p>这里的修改会写入本地 MySQL。当前项目没有登录层，请只在自己的电脑或可信的内网使用。</p></div>
+      <a class="button button-quiet" href="/">打开展示页 →</a>
+    </header>
+    <div class="manage-status" id="manageStatus" role="status">正在读取数据库……</div>
+
+    <section class="manage-panel">
+      <div class="manage-panel-heading"><div><p class="eyebrow">01 / SETTINGS</p><h2>首页文案与日期</h2></div><span>保存后刷新展示页即可看到变化</span></div>
+      <form id="settingsForm" class="settings-grid">
+        <label>网站名称<input name="brandName" required></label>
+        <label>副标题<input name="brandSubtitle" required></label>
+        <label>眉题<input name="eyebrow" required></label>
+        <label>开始日期<input name="startDate" type="date"></label>
+        <label>日期显示文字<input name="startDateLabel" placeholder="例如：2024.05.20"></label>
+        <label>彩蛋暗号<input name="secretCode" placeholder="留空则不设置暗号"></label>
+        <label class="wide">首页第一行<input name="heroTitle" required></label>
+        <label class="wide">首页强调句<input name="heroAccent" required></label>
+        <label class="wide">首页介绍<textarea name="heroIntro" rows="3"></textarea></label>
+        <div class="wide form-actions"><button class="button button-primary" type="submit">保存首页设置</button></div>
+      </form>
+    </section>
+
+    <section class="manage-panel">
+      <div class="manage-panel-heading"><div><p class="eyebrow">02 / TIMELINE</p><h2>时间线</h2></div><span>可新增、修改、删除</span></div>
+      <form id="timelineForm" class="entry-form">
+        <input type="hidden" name="id">
+        <label>日期<input name="date" placeholder="例如：2024.05.20" required></label>
+        <label>标题<input name="title" required></label>
+        <label>标签<input name="tag" value="回忆"></label>
+        <label>排序<input name="sortOrder" type="number" value="1"></label>
+        <label class="wide">故事内容<textarea name="text" rows="3" required></textarea></label>
+        <div class="wide form-actions"><button class="button button-primary" type="submit">保存时间线</button><button class="mini-button" type="button" data-clear="timelineForm">清空表单</button></div>
+      </form>
+      <div id="timelineEntries" class="entry-list"></div>
+    </section>
+
+    <section class="manage-panel">
+      <div class="manage-panel-heading"><div><p class="eyebrow">03 / GALLERY</p><h2>照片墙</h2></div><span>图片先放进项目目录，再填写相对路径</span></div>
+      <form id="galleryForm" class="entry-form">
+        <input type="hidden" name="id">
+        <label>分类<input name="category" value="日常" required></label>
+        <label>标题<input name="title" required></label>
+        <label>说明<input name="note"></label>
+        <label>排序<input name="sortOrder" type="number" value="1"></label>
+        <label class="wide">图片路径<input name="image" placeholder="例如：media/photos/first.jpg"></label>
+        <div class="wide form-actions"><button class="button button-primary" type="submit">保存照片卡片</button><button class="mini-button" type="button" data-clear="galleryForm">清空表单</button></div>
+      </form>
+      <div id="galleryEntries" class="entry-list"></div>
+    </section>
+
+    <section class="manage-panel">
+      <div class="manage-panel-heading"><div><p class="eyebrow">04 / GAMES</p><h2>互动题库</h2></div><span>答案序号从 0 开始；选项一行一个</span></div>
+      <form id="quizForm" class="entry-form">
+        <input type="hidden" name="id">
+        <label class="wide">问题<input name="question" required></label>
+        <label class="wide">选项（每行一个）<textarea name="choicesText" rows="4" required></textarea></label>
+        <label>正确答案序号<input name="answer" type="number" min="0" value="0"></label>
+        <label>排序<input name="sortOrder" type="number" value="1"></label>
+        <div class="wide form-actions"><button class="button button-primary" type="submit">保存问题</button><button class="mini-button" type="button" data-clear="quizForm">清空表单</button></div>
+      </form>
+      <div id="quizEntries" class="entry-list"></div>
+      <form id="orderForm" class="entry-form order-manage-form">
+        <input type="hidden" name="id">
+        <label>事件名称<input name="label" required></label>
+        <label>正确顺序<input name="order" type="number" value="1"></label>
+        <label>排序<input name="sortOrder" type="number" value="1"></label>
+        <div class="form-actions"><button class="button button-primary" type="submit">保存拼图事件</button><button class="mini-button" type="button" data-clear="orderForm">清空</button></div>
+      </form>
+      <div id="orderEntries" class="entry-list"></div>
+    </section>
+  </main>
+  <script>window.LOVE_API_BASE_URL = "http://localhost:3000";</script>
+  <script src="manage.js"></script>
+</body>
+</html>

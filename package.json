@@ -1,0 +1,21 @@
+{
+  "name": "our-little-universe",
+  "version": "1.0.0",
+  "private": true,
+  "description": "前后端分离的私人恋爱回忆网站",
+  "main": "backend/server.js",
+  "scripts": {
+    "start": "node backend/server.js",
+    "dev": "node --watch backend/server.js",
+    "db:init": "node backend/init-db.js"
+  },
+  "engines": {
+    "node": ">=16"
+  },
+  "dependencies": {
+    "cors": "^2.8.5",
+    "dotenv": "^16.4.7",
+    "express": "^4.21.2",
+    "mysql2": "^3.12.0"
+  }
+}
