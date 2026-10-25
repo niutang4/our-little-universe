@@ -2,7 +2,7 @@
 
 这是一个前后端分离的私人恋爱回忆网站：前端是静态 HTML/CSS/JavaScript，后端是 Express API，内容存储在本机 MySQL 5.7.44（localhost:3306）中。
 
-完整操作步骤请查看：[操作文档.md](E:/研究生阶段/研1/Interesting something/love day/操作文档.md)
+完整操作步骤请查看：[操作文档.md](./操作文档.md)
 
 ## 功能介绍
 
