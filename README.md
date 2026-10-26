@@ -2,7 +2,6 @@
 
 这是一个前后端分离的私人恋爱回忆网站：前端是静态 HTML/CSS/JavaScript，后端是 Express API，内容存储在本机 MySQL 5.7.44（localhost:3306）中。
 
-完整操作步骤请查看：[操作文档.md](./操作文档.md)
 
 ## 功能介绍
 
@@ -98,7 +97,8 @@ python -m http.server 5173
 
 然后打开 <http://localhost:5173/>。`index.html` 和 `manage.html` 已将 API 地址配置为 `http://localhost:3000`；部署到别的后端地址时，修改页面底部的 `LOVE_API_BASE_URL` 即可。
 
-默认连接配置就是用户要求的 `localhost:3306 / root / 123456 / love_universe`。如果以后要更换配置，复制 `.env.example` 为 `.env` 后修改即可。`.env` 不要上传到公网或代码仓库。
+默认连接配置是 `localhost:3306 / root / 123456 / love_universe`。如果以后要更换配置，复制 `.env.example` 为 `.env` 后修改即可。`.env` 可根据自己配置按需修改。
+注意！！！！！！！！！！`.env`只保存在本机，不要上传到网盘、GitHub 或公开服务器。
 
 ## 恋爱信息从哪里补充
 
@@ -144,7 +144,7 @@ media/photos/first-meeting.jpg
 - `POST/PUT/DELETE /api/gallery`：管理照片墙
 - `GET/POST /api/letters`：读取和保存未来信件
 
-当前按你的要求没有登录层，适合本机或可信内网使用。不要直接把这个管理 API 暴露到公网；如果需要 Cloudflare Tunnel，建议只公开展示页，管理端留在本机。
+没有登录层，适合本机或可信内网使用。不要直接把这个管理 API 暴露到公网；如果需要 Cloudflare Tunnel，建议只公开展示页，管理端留在本机。
 
 ## 备份
 
